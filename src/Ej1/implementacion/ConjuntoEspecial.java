@@ -2,7 +2,7 @@ package Ej1.implementacion;
 
 import Ej1.interfaz.ConjuntoEspecialTDA;
 import Ej1.interfaz.ConjuntoEspecialTDA.Respuesta;
-// EJ 1
+
 public class ConjuntoEspecial implements ConjuntoEspecialTDA{
 
 	private class Nodo {
