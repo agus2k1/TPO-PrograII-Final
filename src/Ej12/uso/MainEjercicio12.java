@@ -10,11 +10,11 @@ public class MainEjercicio12 {
         ABBTDA arbol = new ABB();
         arbol.inicializarArbol();
 
-        arbol.agregar(5);
-        arbol.agregar(3);
-        arbol.agregar(7);
-        arbol.agregar(2);
-        arbol.agregar(4);
+        arbol.agregarElem(5);
+        arbol.agregarElem(3);
+        arbol.agregarElem(7);
+        arbol.agregarElem(2);
+        arbol.agregarElem(4);
 
         MetodosEj12 metodos = new MetodosEj12();
         int suma = metodos.sumaImpar(arbol);
