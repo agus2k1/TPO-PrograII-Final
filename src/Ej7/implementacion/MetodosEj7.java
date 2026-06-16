@@ -7,43 +7,36 @@ import tda.PilaTDA;
 
 public class MetodosEj7 {
 
-    public ConjuntoTDA elementosRepetidos(PilaTDA pila) {
+    public ConjuntoTDA elementosRepetidos(PilaTDA pila) { // P
 
-        // Guarda los elementos que ya aparecieron
-        ConjuntoTDA conjuntoVistos = new Conjunto();
-        conjuntoVistos.inicializarConjunto();
+        ConjuntoTDA conjuntoVistos = new Conjunto(); // C
+        conjuntoVistos.inicializarConjunto(); // C
 
-        // Guarda los elementos repetidos
-        ConjuntoTDA conjuntoResultado = new Conjunto();
-        conjuntoResultado.inicializarConjunto();
+        ConjuntoTDA conjuntoResultado = new Conjunto(); // C
+        conjuntoResultado.inicializarConjunto(); // C
 
-        // Permite restaurar la pila original
-        PilaTDA aux = new Pila();
-        aux.inicializarPila();
+        PilaTDA aux = new Pila(); // C
+        aux.inicializarPila(); // C
 
-        // Recorro la pila
-        while(!pila.pilaVacia()) {
-            int elemento = pila.tope();
+        while(!pila.pilaVacia()) { // P (pertenece adentro es L)
+            int elemento = pila.tope(); // C
 
-            // Guardo el elemento para reconstruir la pila luego
-            aux.apilar(elemento);
-            pila.desapilar();
+            aux.apilar(elemento); // C
+            pila.desapilar(); // C
 
-            // Si ya aparecio, lo agrego al resultado
-            if(conjuntoVistos.pertenece(elemento)) {
-                conjuntoResultado.agregar(elemento);
+            if(conjuntoVistos.pertenece(elemento)) { // L
+                conjuntoResultado.agregar(elemento); // C
             } else {
-                conjuntoVistos.agregar(elemento);
+                conjuntoVistos.agregar(elemento); // C
             }
         }
 
-        // Restauro la pila original
-        while(!aux.pilaVacia()) {
-            int elemento = aux.tope();
-            pila.apilar(elemento);
-            aux.desapilar();
+        while(!aux.pilaVacia()) { // L
+            int elemento = aux.tope(); // C
+            pila.apilar(elemento); // C
+            aux.desapilar(); // C
         }
 
-        return conjuntoResultado;
+        return conjuntoResultado; // C
     }
 }

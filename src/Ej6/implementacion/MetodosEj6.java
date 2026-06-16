@@ -5,29 +5,29 @@ import tda.PilaTDA;
 
 public class MetodosEj6 {
 
-    public float pares(PilaTDA pila) {
+    public float pares(PilaTDA pila) { // L
 
-        PilaTDA aux = new Pila();
-        aux.inicializarPila();
+        PilaTDA aux = new Pila(); // C
+        aux.inicializarPila(); // C
 
-        float contadorPares = 0;
-        float contadorTotal = 0;
+        float contadorPares = 0; // C
+        float contadorTotal = 0; // C
 
-        while(!pila.pilaVacia()) {
-            int num = pila.tope();
-            if (num % 2 == 0) {
-                contadorPares++;
+        while(!pila.pilaVacia()) { // L
+            int num = pila.tope(); // C
+            if (num % 2 == 0) { // C
+                contadorPares++; // C
             }
-            contadorTotal++;
-            aux.apilar(num);
-            pila.desapilar();
+            contadorTotal++; // C
+            aux.apilar(num); // C
+            pila.desapilar(); // C
         }
 
-        while(!aux.pilaVacia()) {
-            pila.apilar(aux.tope());
-            aux.desapilar();
+        while(!aux.pilaVacia()) { // L
+            pila.apilar(aux.tope()); // C
+            aux.desapilar(); // C
         }
 
-        return (contadorPares / contadorTotal) * 100;
+        return (contadorPares / contadorTotal) * 100; // C
     }
 }

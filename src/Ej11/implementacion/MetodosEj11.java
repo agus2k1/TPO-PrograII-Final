@@ -8,28 +8,28 @@ import tda.DiccionarioMultipleTDA;
 
 public class MetodosEj11 {
 
-    public ColaTDA valoresDiccionario(DiccionarioMultipleTDA dic) {
+    public ColaTDA valoresDiccionario(DiccionarioMultipleTDA dic) { // P
 
-        ColaTDA cola = new Cola();
-        cola.inicializarCola();
-        ConjuntoTDA vistos = new Conjunto();
-        vistos.inicializarConjunto();
-        ConjuntoTDA claves = dic.claves();
+        ColaTDA cola = new Cola(); // C
+        cola.inicializarCola(); // C
+        ConjuntoTDA vistos = new Conjunto(); // C
+        vistos.inicializarConjunto(); // C
+        ConjuntoTDA claves = dic.claves(); // L
 
-        while (!claves.conjuntoVacio()) {
-            int clave = claves.elegir();
-            claves.sacar(clave);
-            ConjuntoTDA valores = dic.recuperar(clave);
-            while (!valores.conjuntoVacio()) {
-                int valor = valores.elegir();
-                valores.sacar(valor);
-                if (!vistos.pertenece(valor)) {
-                    vistos.agregar(valor);
-                    cola.acolar(valor);
+        while (!claves.conjuntoVacio()) { // P (loop interno con L adentro)
+            int clave = claves.elegir(); // C
+            claves.sacar(clave); // L
+            ConjuntoTDA valores = dic.recuperar(clave); // L
+            while (!valores.conjuntoVacio()) { // P (pertenece adentro es L)
+                int valor = valores.elegir(); // C
+                valores.sacar(valor); // L
+                if (!vistos.pertenece(valor)) { // L
+                    vistos.agregar(valor); // C
+                    cola.acolar(valor); // C
                 }
             }
         }
 
-        return cola;
+        return cola; // C
     }
 }

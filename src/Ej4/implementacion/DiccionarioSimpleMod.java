@@ -15,80 +15,70 @@ public class DiccionarioSimpleMod implements DiccionarioSimpleModTDA {
     }
 
     @Override
-    public void inicializarDiccionario() {
-        primero = null;
+    public void inicializarDiccionario() { // C
+        primero = null; // C
     }
 
     @Override
-    public void agregar(int clave, int valor) {
-        if (!this.claves().pertenece(clave)) {
-            NodoClave nodoClave = new NodoClave();
-            nodoClave.clave = clave;
-            nodoClave.valor = valor;
-            nodoClave.factorMod = 0;
-            nodoClave.sigClave = primero;
-            primero = nodoClave;
+    public void agregar(int clave, int valor) { // L
+        if (!this.claves().pertenece(clave)) { // L (claves() itera la lista)
+            NodoClave nodoClave = new NodoClave(); // C
+            nodoClave.clave = clave; // C
+            nodoClave.valor = valor; // C
+            nodoClave.factorMod = 0; // C
+            nodoClave.sigClave = primero; // C
+            primero = nodoClave; // C
         } else {
-            NodoClave nodoClave = primero;
-
-            while (nodoClave != null && clave != nodoClave.clave) {
-                nodoClave = nodoClave.sigClave;
+            NodoClave nodoClave = primero; // C
+            while (nodoClave != null && clave != nodoClave.clave) { // L
+                nodoClave = nodoClave.sigClave; // C
             }
-
-            nodoClave.factorMod++;
+            nodoClave.factorMod++; // C
         }
     }
 
     @Override
-    public void eliminar(int clave) {
-        NodoClave nodoClave = primero;
-        NodoClave nodoAnterior = null;
-
-        while (nodoClave != null && clave != nodoClave.clave) {
-            nodoAnterior = nodoClave;
-            nodoClave = nodoClave.sigClave;
+    public void eliminar(int clave) { // L
+        NodoClave nodoClave = primero; // C
+        NodoClave nodoAnterior = null; // C
+        while (nodoClave != null && clave != nodoClave.clave) { // L
+            nodoAnterior = nodoClave; // C
+            nodoClave = nodoClave.sigClave; // C
         }
-
-        if (nodoAnterior == null) {
-            primero = nodoClave.sigClave;
+        if (nodoAnterior == null) { // C
+            primero = nodoClave.sigClave; // C
         } else {
-            nodoAnterior.sigClave = nodoClave.sigClave;
+            nodoAnterior.sigClave = nodoClave.sigClave; // C
         }
     }
 
     @Override
-    public int recuperar(int clave) {
-        NodoClave nodoClave = primero;
-
-        while (nodoClave != null && clave != nodoClave.clave) {
-            nodoClave = nodoClave.sigClave;
+    public int recuperar(int clave) { // L
+        NodoClave nodoClave = primero; // C
+        while (nodoClave != null && clave != nodoClave.clave) { // L
+            nodoClave = nodoClave.sigClave; // C
         }
-
-        return nodoClave.valor;
+        return nodoClave.valor; // C
     }
 
     @Override
-    public int recuperarMod(int clave) {
-        NodoClave nodoClave = primero;
-
-        while (nodoClave != null && clave != nodoClave.clave) {
-            nodoClave = nodoClave.sigClave;
+    public int recuperarMod(int clave) { // L
+        NodoClave nodoClave = primero; // C
+        while (nodoClave != null && clave != nodoClave.clave) { // L
+            nodoClave = nodoClave.sigClave; // C
         }
-
-        return nodoClave.factorMod;
+        return nodoClave.factorMod; // C
     }
 
     @Override
-    public ConjuntoTDA claves() {
-        ConjuntoTDA claves = new Conjunto();
-        claves.inicializarConjunto();
-        NodoClave nodoClave = primero;
-
-        while (nodoClave != null) {
-            claves.agregar(nodoClave.clave);
-            nodoClave = nodoClave.sigClave;
+    public ConjuntoTDA claves() { // L
+        ConjuntoTDA claves = new Conjunto(); // C
+        claves.inicializarConjunto(); // C
+        NodoClave nodoClave = primero; // C
+        while (nodoClave != null) { // L
+            claves.agregar(nodoClave.clave); // C
+            nodoClave = nodoClave.sigClave; // C
         }
-
-        return claves;
+        return claves; // C
     }
 }

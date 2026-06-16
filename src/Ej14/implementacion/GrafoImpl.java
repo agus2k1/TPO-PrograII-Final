@@ -6,37 +6,37 @@ import tda.GrafoTDA;
 
 public class GrafoImpl {
 
-    public ConjuntoTDA verticesPuente(GrafoTDA grafo, int v1, int v2) {
-        ConjuntoTDA conjuntoResultado = new Conjunto();
-        conjuntoResultado.inicializarConjunto();
+    public ConjuntoTDA verticesPuente(GrafoTDA grafo, int v1, int v2) { // P
+        ConjuntoTDA conjuntoResultado = new Conjunto(); // C
+        conjuntoResultado.inicializarConjunto(); // C
 
-        ConjuntoTDA verticesTotal = grafo.vertices();
-        verticesTotal.sacar(v1);
-        verticesTotal.sacar(v2);
+        ConjuntoTDA verticesTotal = grafo.vertices(); // L
+        verticesTotal.sacar(v1); // L
+        verticesTotal.sacar(v2); // L
 
-        ConjuntoTDA verticesPuente = new Conjunto();
-        verticesPuente.inicializarConjunto();
+        ConjuntoTDA verticesPuente = new Conjunto(); // C
+        verticesPuente.inicializarConjunto(); // C
 
-        while (!verticesTotal.conjuntoVacio()) {
-            int verticeElegido = verticesTotal.elegir();
+        while (!verticesTotal.conjuntoVacio()) { // P (existeArista y sacar adentro son L)
+            int verticeElegido = verticesTotal.elegir(); // C
 
-            if (grafo.existeArista(v1, verticeElegido)) {
-                verticesPuente.agregar(verticeElegido);
+            if (grafo.existeArista(v1, verticeElegido)) { // L
+                verticesPuente.agregar(verticeElegido); // C
             }
 
-            verticesTotal.sacar(verticeElegido);
+            verticesTotal.sacar(verticeElegido); // L
         }
 
-        while (!verticesPuente.conjuntoVacio()) {
-            int verticeElegido = verticesPuente.elegir();
+        while (!verticesPuente.conjuntoVacio()) { // P (existeArista y sacar adentro son L)
+            int verticeElegido = verticesPuente.elegir(); // C
 
-            if (grafo.existeArista(verticeElegido, v2)) {
-                conjuntoResultado.agregar(verticeElegido);
+            if (grafo.existeArista(verticeElegido, v2)) { // L
+                conjuntoResultado.agregar(verticeElegido); // C
             }
 
-            verticesPuente.sacar(verticeElegido);
+            verticesPuente.sacar(verticeElegido); // L
         }
 
-        return conjuntoResultado;
+        return conjuntoResultado; // C
     }
 }
