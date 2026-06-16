@@ -1,6 +1,7 @@
 package Ej11.implementacion;
 
 import imple.Cola;
+import imple.Conjunto;
 import tda.ColaTDA;
 import tda.ConjuntoTDA;
 import tda.DiccionarioMultipleTDA;
@@ -11,6 +12,8 @@ public class MetodosEj11 {
 
         ColaTDA cola = new Cola();
         cola.inicializarCola();
+        ConjuntoTDA vistos = new Conjunto();
+        vistos.inicializarConjunto();
         ConjuntoTDA claves = dic.claves();
 
         while (!claves.conjuntoVacio()) {
@@ -20,7 +23,10 @@ public class MetodosEj11 {
             while (!valores.conjuntoVacio()) {
                 int valor = valores.elegir();
                 valores.sacar(valor);
-                cola.acolar(valor);
+                if (!vistos.pertenece(valor)) {
+                    vistos.agregar(valor);
+                    cola.acolar(valor);
+                }
             }
         }
 

@@ -57,6 +57,8 @@ public class ConjuntoEspecial implements ConjuntoEspecialTDA{
 					RTA.rta = valor; // C
 				}
 			}
+		} else {
+			RTA.error = true; // C
 		}
 
 		return RTA; // C

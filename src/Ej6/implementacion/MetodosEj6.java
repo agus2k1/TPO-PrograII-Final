@@ -10,8 +10,8 @@ public class MetodosEj6 {
         PilaTDA aux = new Pila();
         aux.inicializarPila();
 
-        int contadorPares = 0;
-        int contadorTotal = 0;
+        float contadorPares = 0;
+        float contadorTotal = 0;
 
         while(!pila.pilaVacia()) {
             int num = pila.tope();
